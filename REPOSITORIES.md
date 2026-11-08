@@ -131,7 +131,7 @@ scripts/generate-docs.sh
 - Category: `module`
 - Route: `modules-macos`
 - Summary: macOS and Homebrew modules
-- Keywords: `macos,darwin,homebrew,brew,module`
+- Keywords: `macos,darwin,homebrew,brew,module,mole,cleaner,cleanup,appcleaner`
 - Validator:
 
   ```bash
