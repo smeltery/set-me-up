@@ -2,9 +2,6 @@ name: Install Canary
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "43 10 * * *"
-
 permissions:
   contents: read
   issues: write
