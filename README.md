@@ -1,11 +1,20 @@
-# set-me-up 👷🏼
+# set-me-up
+
+![Your setup, repeatable. A moonlit ASCII mountain range.](brand/social-card.png)
 
 [![Lint](https://github.com/smeltery/set-me-up/workflows/Lint/badge.svg)](https://github.com/smeltery/set-me-up/actions/workflows/lint.yml)
 [![Tests](https://github.com/smeltery/set-me-up/workflows/Tests/badge.svg)](https://github.com/smeltery/set-me-up/actions/workflows/tests.yml)
 [![Release Readiness](https://github.com/smeltery/set-me-up/actions/workflows/release-readiness.yml/badge.svg)](https://github.com/smeltery/set-me-up/actions/workflows/release-readiness.yml)
 [![License: PolyForm Shield 1.0.0](https://img.shields.io/badge/License-PolyForm%20Shield%201.0.0-blue.svg)](https://polyformproject.org/licenses/shield/1.0.0)
 
-A comprehensive dotfiles and system configuration framework.
+set-me-up is a modular framework for managing dotfiles and system setup. Keep
+your configuration in a version-controlled blueprint, then use `smu` to apply
+the modules each machine needs.
+
+[Install set-me-up][install] · [Clone the repo collection](#quick-setup) ·
+[Set up a VPS](#vps-setup)
+
+[install]: https://github.com/smeltery/set-me-up-docs#quick-start
 
 ## Documentation
 
@@ -14,6 +23,8 @@ For detailed information about how set-me-up works, see the [documentation](http
 For information about the setup and update scripts, see [scripts/SCRIPTS.md](scripts/SCRIPTS.md).
 For the generated repository, route, capability, and validator index, see
 [REPOSITORIES.md](REPOSITORIES.md).
+
+For logos, colors, and project copy, see the [brand kit](brand/README.md).
 
 For a headless Ubuntu/Debian VPS such as a DigitalOcean Droplet, use the
 first-class VPS path documented in [scripts/VPS.md](scripts/VPS.md).
@@ -47,7 +58,7 @@ validation locally.
 
 ## Quick Setup
 
-To clone all repositories and recreate the complete directory structure:
+Clone the repo collection to work on set-me-up and its managed repositories:
 
 ```bash
 git clone https://github.com/smeltery/set-me-up.git
@@ -88,6 +99,7 @@ both scripts.
 
 ```text
 set-me-up/
+├── brand/               # Brand guidelines and artwork
 ├── blueprint/           # Blueprint configuration
 ├── docs/                # Documentation
 ├── installer/           # Installation scripts
