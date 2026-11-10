@@ -1,4 +1,5 @@
-# set-me-up
+<!-- markdownlint-disable-next-line MD033 -->
+# <img src="brand/mark.svg" width="28" height="28" alt="Terminal prompt logo"> set-me-up
 
 ![Your setup, repeatable. A moonlit ASCII mountain range.](brand/social-card.png)
 
