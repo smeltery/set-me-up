@@ -1,0 +1,47 @@
+{
+  "path": "/docs/reference",
+  "title": "Reference",
+  "group": "Reference",
+  "order": 0,
+  "description": "Look up command behavior, adapter responsibilities, and the trust boundaries behind a setup.",
+  "sections": [
+    {
+      "id": "interfaces",
+      "title": "Commands and implementations",
+      "paragraphs": [
+        "Use the command reference with the help output from your installed CLI. Check adapter coverage before expecting a module selection to work through another provisioning system."
+      ],
+      "links": [
+        {
+          "label": "CLI reference",
+          "href": "/docs/reference/cli",
+          "icon": "terminal"
+        },
+        {
+          "label": "Provisioning adapters",
+          "href": "/docs/reference/adapters",
+          "icon": "shell"
+        }
+      ]
+    },
+    {
+      "id": "boundaries",
+      "title": "Trust and safety",
+      "paragraphs": [
+        "Understand what previews inspect, what execution can change, and how to handle secrets and diagnostic reports. Consult the practical review guide when deciding whether to apply a plan."
+      ],
+      "links": [
+        {
+          "label": "Trust and safety",
+          "href": "/docs/reference/trust",
+          "icon": "shell"
+        },
+        {
+          "label": "Review a setup plan",
+          "href": "/docs/guides/review-a-plan",
+          "icon": "folder"
+        }
+      ]
+    }
+  ]
+}

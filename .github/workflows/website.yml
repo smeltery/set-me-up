@@ -1,0 +1,28 @@
+name: Marketing CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NEXT_TELEMETRY_DISABLED: "1"
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  website:
+    name: Marketing site
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+      - uses: flox/install-flox-action@61d86f71ca9fc8061fea04e5bc5e3a8206423dca
+      - name: Install locked dependencies and run the local gate
+        run: flox activate --dir website -- bash -c 'cd "$FLOX_ENV_PROJECT" && bun install --frozen-lockfile && bun run ci && actionlint -shellcheck="" ../.github/workflows/*.yml'

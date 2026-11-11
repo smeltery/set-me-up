@@ -1,0 +1,113 @@
+:root {
+  --background: #f7f6ef;
+  --foreground: #14231b;
+  --card: #edf0e2;
+  --card-foreground: #14231b;
+  --popover: #f7f6ef;
+  --popover-foreground: #14231b;
+  --primary: #456449;
+  --primary-foreground: #f7f6ef;
+  --secondary: #edf0e2;
+  --secondary-foreground: #35543b;
+  --muted: #edf0e2;
+  --muted-foreground: #586750;
+  --accent: #e3e9d5;
+  --accent-foreground: #203c2c;
+  --border: #d4dcc7;
+  --input: #bdcbb0;
+  --ring: #77945c;
+  --surface: #edf0e2;
+  --surface-foreground: #35543b;
+  --code: #edf0e2;
+  --code-foreground: #203c2c;
+  --code-highlight: #dbe5c1;
+  --code-number: #66765b;
+  --sidebar: #f7f6ef;
+  --sidebar-foreground: #14231b;
+  --sidebar-accent: #e3e9d5;
+  --sidebar-accent-foreground: #203c2c;
+  --sidebar-border: #d4dcc7;
+  --selection: #d7dfb2;
+  --selection-foreground: #14231b;
+  --ascii-ink: var(--foreground);
+  --ascii-paper: var(--background);
+  --accent-mid: #77945c;
+  --accent-soft: #edf0e2;
+  --accent-border: #9db28a;
+}
+.dark {
+  --background: #09110d;
+  --foreground: #e5ebe1;
+  --card: #101b14;
+  --card-foreground: #e5ebe1;
+  --popover: #101b14;
+  --popover-foreground: #e5ebe1;
+  --primary: #c6d797;
+  --primary-foreground: #14231b;
+  --secondary: #1d2b21;
+  --secondary-foreground: #dbe5bb;
+  --muted: #142118;
+  --muted-foreground: #99a894;
+  --accent: #1d2b21;
+  --accent-foreground: #e5ebe1;
+  --border: #26392c;
+  --input: #40563e;
+  --ring: #94ab73;
+  --surface: #101b14;
+  --surface-foreground: #c4d2bb;
+  --code: #101b14;
+  --code-foreground: #e5ebe1;
+  --code-highlight: #243b28;
+  --code-number: #99a894;
+  --sidebar: #09110d;
+  --sidebar-foreground: #e5ebe1;
+  --sidebar-accent: #1d2b21;
+  --sidebar-accent-foreground: #e5ebe1;
+  --sidebar-border: #26392c;
+  --selection: #c6d797;
+  --selection-foreground: #14231b;
+  --accent-mid: #a5bc84;
+  --accent-soft: #1d2b21;
+  --accent-border: #4f6849;
+}
+.sequence-figure {
+  max-inline-size: 42rem;
+  margin: 18px 0 0;
+  padding: 16px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+.sequence-scroll {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+}
+.sequence-scroll svg {
+  display: block;
+  width: 100%;
+  min-width: 640px;
+}
+.sequence-scroll text {
+  font: 12px var(--font-sans);
+  fill: var(--foreground);
+}
+.sequence-figure figcaption {
+  font-size: 12px;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  padding: 12px 12px 0;
+}
+
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+summary {
+  cursor: pointer;
+}
+
+[role="menuitem"]:not([data-disabled]),
+[role="option"]:not([aria-disabled="true"]),
+[role="tab"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}

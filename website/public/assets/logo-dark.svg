@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="96" viewBox="0 0 420 96" role="img" aria-labelledby="title">
+  <title id="title">set-me-up</title>
+  <rect x="8" y="8" width="80" height="80" rx="15" fill="#DBE2C5"/>
+  <path transform="translate(8 8) scale(.833333)" d="M23 25h13l23 23-23 23H23l23-23zm34 35h16v11H46z" fill="#14231B"/>
+  <g fill="none" stroke="#F7F6EF" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M134 38h-13a6 6 0 0 0 0 12h8a6 6 0 0 1 0 12h-14"/>
+    <path id="e" d="M168 62h-12a8 8 0 0 1-8-8v-8a8 8 0 0 1 8-8h5a8 8 0 0 1 8 8v4h-21"/>
+    <path d="M187 29v25a8 8 0 0 0 8 8h6m-21-24h20"/>
+    <path id="dash" d="M213 50h16"/>
+    <path d="M243 62V38m0 8a8 8 0 0 1 16 0v16m0-16a8 8 0 0 1 16 0v16"/>
+    <use href="#e" x="140"/>
+    <use href="#dash" x="108"/>
+    <path d="M351 38v16a8 8 0 0 0 8 8h3a9 9 0 0 0 9-9m0-15v24"/>
+    <path d="M386 72V38m0 8a8 8 0 0 1 8-8h5a8 8 0 0 1 8 8v8a8 8 0 0 1-8 8h-5a8 8 0 0 1-8-8"/>
+  </g>
+</svg>

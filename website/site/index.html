@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>set-me-up — Your setup, repeatable.</title>
+  <meta name="description" content="Keep dotfiles and system setup in a version-controlled blueprint. Use smu to apply the modules each machine needs.">
+  <meta name="theme-color" content="#14231b">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="set-me-up — Your setup, repeatable.">
+  <meta property="og:description" content="A modular framework for managing dotfiles and system setup.">
+  <meta property="og:image" content="{{SOCIAL_IMAGE}}">
+  <meta property="og:image:alt" content="Your setup, repeatable, against an ASCII redwood forest">
+  <meta name="twitter:card" content="summary_large_image">
+  {{INDEXING}}
+  <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="/hero-glyphs.svg">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/smooth-scroll.css">
+  <script src="/smooth-scroll.js" type="module"></script>
+  <link rel="stylesheet" href="/shell.css">
+  <link rel="stylesheet" href="/navigation-reference.css">
+  <link rel="stylesheet" href="/search.css">
+  <script src="/search.js" type="module"></script>
+  <link rel="stylesheet" href="/terminal-ui.css">
+  <script src="/navigation.js" defer></script>
+  <script src="/site.js" type="module"></script>
+  <link rel="stylesheet" href="/explore.css">
+  <script src="/explore.js" type="module"></script>
+  <script src="/art-motion.js" type="module"></script>
+  <link rel="stylesheet" href="/ascii-rest.css">
+  <script src="/ascii-rest/ascii-rest.js" type="module"></script>
+  <script type="module" src="/command-panel.js"></script>
+</head>
+<body id="top" class="marketing-site">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{HEADER}}
+  <main id="main" tabindex="-1">
+    <div class="hero" data-ascii-scene>
+      <img class="landscape hero-glyphs" src="/hero-glyphs.svg" width="1440" height="760" alt="" fetchpriority="high">
+      <canvas class="landscape hero-landscape" width="1440" height="760" data-hero-landscape aria-hidden="true"></canvas>
+      <div class="hero-trail" data-hero-trail aria-hidden="true"></div>
+
+      <div class="wrap hero-content">
+        <p class="eyebrow"><span class="signal" aria-hidden="true"></span> Dotfiles &amp; system setup</p>
+        <h1>Your setup,<br>repeatable.</h1>
+        <p class="lede">Keep your setup in a blueprint. Use <code>smu</code> to apply the modules each machine needs.</p>
+        {{HERO_SETUP_PANEL}}
+      </div>
+    </div>
+
+    <section class="wrap guide" id="how-it-works" aria-labelledby="guide-title">
+      <div class="section-heading overview-heading">
+        <p class="eyebrow">01 / How it works</p>
+        <h2 id="guide-title">One blueprint. Your setup.</h2>
+      </div>
+      <div class="plates">
+        <article class="plate">
+          <figure>
+            <p class="plate-label">blueprint · source repo</p>
+            <div class="plate-illustration" aria-hidden="true">
+              <div class="blueprint-browser">
+                <div class="blueprint-browser-bar"><span>[~/] blueprint</span><span>⑂ main</span></div>
+                <pre class="rest-file-tree" data-ascii-rest="file-tree">~/blueprint
+├─ smu.toml
+└─ dotfiles/
+   └─ modules/</pre>
+              </div>
+            </div>
+            <figcaption class="plate-command" data-copy-command>
+              <span aria-hidden="true">$</span><code>smu blueprint doctor</code>
+              <button type="button" aria-label="Copy smu blueprint doctor" hidden>Copy</button>
+              <span class="sr-only" role="status"></span>
+            </figcaption>
+          </figure>
+          <h3>Start with a blueprint</h3>
+          <p>Keep your dotfiles, machine profiles, and module choices in a repository you control.</p>
+        </article>
+        <article class="plate">
+          <figure>
+            <p class="plate-label">modules · your platform</p>
+            <div class="plate-illustration" aria-hidden="true">
+              <div class="feature-tile" data-feature-tile="modules">
+                <div class="feature-fallback"><p>universal/</p><pre>[+] base
+[+] node/npm
+[+] neovim</pre></div>
+              </div>
+            </div>
+            <figcaption class="plate-command" data-copy-command>
+              <span aria-hidden="true">$</span><code>smu --list-modules</code>
+              <button type="button" aria-label="Copy smu --list-modules" hidden>Copy</button>
+              <span class="sr-only" role="status"></span>
+            </figcaption>
+          </figure>
+          <h3>Choose what to install</h3>
+          <p>Pick the modules that install your packages, link your dotfiles, and set your preferences.</p>
+        </article>
+        <article class="plate">
+          <figure>
+            <p class="plate-label">plan · local machine</p>
+            <div class="plate-illustration" aria-hidden="true">
+              <div class="feature-tile" data-feature-tile="plan">
+                <div class="feature-fallback"><p>plan preview</p><pre>› Adapter      rcm
+› Module       base
+✓ Conflicts    none</pre></div>
+              </div>
+            </div>
+            <figcaption class="plate-command" data-copy-command>
+              <span aria-hidden="true">$</span><code>smu plan</code>
+              <button type="button" aria-label="Copy smu plan" hidden>Copy</button>
+              <span class="sr-only" role="status"></span>
+            </figcaption>
+          </figure>
+          <h3>Preview the changes</h3>
+          <p>Inspect the adapter, modules, and potential file conflicts before applying your setup.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="blueprint-section" id="blueprint" aria-labelledby="blueprint-title">
+      <div class="wrap blueprint-layout">
+        <div class="section-heading">
+          <p class="eyebrow">02 / Inside the blueprint</p>
+          <h2 id="blueprint-title">Your setup is just files.</h2>
+          <p>See where the decisions live. Keep them in Git, review the changes, and make the setup your own.</p>
+          <a class="section-guide guide-link" href="{{DOCS_URL}}/docs/guides/blueprints">Explore blueprint structure <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="file-explorer" data-content-picker>
+          <div class="explorer-bar"><span aria-hidden="true">[~/]</span> your-blueprint <span>Example files</span></div>
+          <div class="explorer-body">
+            <fieldset class="file-picker" hidden>
+              <legend class="sr-only">Explore blueprint files</legend>
+              <label><input type="radio" name="blueprint-file" value="config" checked><span>smu.toml<small>Profiles &amp; modules</small></span></label>
+              <label><input type="radio" name="blueprint-file" value="dotfiles"><span>dotfiles/rcrc<small>Dotfile selection</small></span></label>
+              <label><input type="radio" name="blueprint-file" value="module"><span>modules/example/<small>Your custom module</small></span></label>
+            </fieldset>
+            <div class="file-detail" data-picker-panel="config">
+              <p class="file-path">smu.toml</p>
+              <pre><code><span class="file-key">[provisioning]</span>
+adapter = <span class="file-value">"rcm"</span>
+
+<span class="file-key">[profile.default]</span>
+modules = [<span class="file-value">"example"</span>]</code></pre>
+              <p>Choose an adapter and the modules for a profile. This example uses the starter blueprint’s <code>example</code> module.</p>
+              <a href="{{DOCS_URL}}/docs/guides/machine-profiles">Understand profiles <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="file-detail" data-picker-panel="dotfiles" hidden>
+              <p class="file-path">dotfiles/rcrc</p>
+              <pre><code>TAGS=<span class="file-value">"work example smu"</span>
+EXCLUDES=<span class="file-value">"base modules utilities"</span></code></pre>
+              <p>Use rcm tags to select groups of dotfiles. Put your files in <code>dotfiles/tag-work/</code> and preview the links before applying them.</p>
+              <a href="{{DOCS_URL}}/docs/guides/dotfiles">Organize your dotfiles <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="file-detail" data-picker-panel="module" hidden>
+              <p class="file-path">dotfiles/modules/example/</p>
+              <pre><code>your-blueprint/
+└─ dotfiles/
+   └─ modules/
+      └─ <span class="file-value">example/</span></code></pre>
+              <p>The starter blueprint includes a custom module. Use it as a starting point for work that belongs to your setup.</p>
+              <a href="{{DOCS_URL}}/docs/guides/author-a-module">Build a module <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workbench" id="workflow" aria-labelledby="workflow-title">
+      <div class="wrap">
+        <div class="section-heading lab-heading">
+          <p class="eyebrow">03 / Interactive setup lab</p>
+          <h2 id="workflow-title">From blueprint to machine.</h2>
+          <p>Watch a setup take shape, from first preview to next update. Pause anytime to explore a step.</p>
+        </div>
+
+        <div class="setup-lab" data-docs-url="{{DOCS_URL}}" data-profile="macos" data-stage="discover" data-state="ready">
+          <div class="lab-controls">
+            <fieldset class="lab-picker machine-picker" hidden>
+              <legend class="sr-only">Choose a machine</legend>
+              <label><input type="radio" name="machine" value="macos" checked><span>macOS</span></label>
+              <label><input type="radio" name="machine" value="linux"><span>Linux</span></label>
+              <label><input type="radio" name="machine" value="vps"><span>Headless VPS</span></label>
+            </fieldset>
+            <p class="lab-edition"><span aria-hidden="true"></span> Interactive demo</p>
+          </div>
+
+          <fieldset class="lab-picker stage-picker" hidden>
+            <legend class="sr-only">Choose a setup stage</legend>
+            <label><input type="radio" name="stage" value="discover" checked><span><small>01</small> Discover</span></label>
+            <label><input type="radio" name="stage" value="preview"><span><small>02</small> Preview</span></label>
+            <label><input type="radio" name="stage" value="apply"><span><small>03</small> Apply</span></label>
+            <label><input type="radio" name="stage" value="maintain"><span><small>04</small> Maintain</span></label>
+          </fieldset>
+
+          <div class="lab-grid">
+            <div class="lab-operator">
+              <div class="lab-copy">
+                <p class="lab-step" id="step-progress">Step 1 of 4</p>
+                <h3 id="step-title">Discover available modules.</h3>
+                <p id="command-detail">Find the modules available for your machine.</p>
+              </div>
+              <div class="console-actions">
+                <button class="button button-cobalt" type="button" id="run-demo" hidden><span id="run-label">List modules</span><span aria-hidden="true">→</span></button>
+                <button class="lab-back" type="button" id="previous-demo" hidden>← Back</button>
+              </div>
+              <p class="demo-status" id="demo-status" role="status"></p>
+              <details class="lab-check">
+                <summary>About this step</summary>
+                <p id="step-check">Use these module IDs when choosing what to install.</p>
+                <a class="lab-guide guide-link" id="profile-guide" href="{{DOCS_URL}}/docs/guides/modules"><span id="guide-label">Modules guide</span><span aria-hidden="true">↗</span></a>
+              </details>
+            </div>
+            <div class="transcript">
+              <div class="transcript-label"><span>smu / example session</span><button type="button" id="copy-command" aria-label="Copy command" hidden>Copy</button></div>
+              <div class="command-line"><span aria-hidden="true">$</span><code id="command">smu --list-modules</code></div>
+              <pre id="transcript-output">Run the example to see the result.</pre>
+              <div class="lab-terminal"></div>
+              <div class="terminal-caption"><span id="transcript-state">Ready</span><span id="command-risk">Read-only</span></div>
+            </div>
+          </div>
+          <p class="lab-note">Simulated examples. No commands run on your machine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" data-ascii-scene id="next-machine" aria-labelledby="cta-title" data-agent-prompt-panel data-agent-guide="{{DOCS_URL}}/docs/quick-start">
+      <img class="cta-art" src="/cta-glyphs.svg" width="1440" height="440" alt="" loading="lazy" aria-hidden="true">
+      <canvas class="cta-art cta-landscape" data-cta-landscape aria-hidden="true"></canvas>
+      <div class="wrap cta-content">
+        <p class="eyebrow">Your next machine</p>
+        <h2 id="cta-title">Make this setup<br>the one you keep.</h2>
+        <p>Put your dotfiles, modules, and machine choices in a blueprint. Start small, review the plan, and build from there.</p>
+        <div class="actions">
+          <a class="button button-light" href="{{DOCS_URL}}/docs/quick-start">Get started</a>
+          <button class="button cta-secondary" type="button" data-copy-agent-prompt hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></svg>
+            <span>Copy agent prompt</span>
+          </button>
+        </div>
+        <p class="sr-only launch-status" role="status"></p>
+        <details class="agent-prompt-fallback" hidden>
+          <summary>Copy the prompt manually</summary>
+          <pre tabindex="0" aria-label="Setup prompt to copy"></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="wrap support" id="platforms" aria-labelledby="platforms-title">
+      <div class="section-heading">
+        <p class="eyebrow">04 / Platforms and adapters</p>
+        <h2 id="platforms-title">Choose your machine.</h2>
+        <p>See which modules and adapters fit your platform, then try that profile in the setup lab.</p>
+      </div>
+      <div class="platforms">
+        <article class="platform-card">
+          <div class="platform-card-heading">
+            <span aria-hidden="true">[&gt;_]</span>
+            <h3>macOS</h3>
+          </div>
+          <p>Combine macOS and shared modules. Use shell scripts with <code>rcm</code> for dotfiles or choose a compatible Nix adapter.</p>
+          <div class="platform-actions">
+            <a href="#workflow" class="button button-cobalt" data-lab-machine="macos" aria-label="Preview macOS setup in the lab">Preview macOS <span aria-hidden="true">→</span></a>
+            <a class="platform-guide" href="{{DOCS_URL}}/docs/reference/adapters">Adapter reference <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="platform-card">
+          <div class="platform-card-heading">
+            <span aria-hidden="true">[&gt;_]</span>
+            <h3>Linux desktop</h3>
+          </div>
+          <p>Choose modules for Debian, Ubuntu, or Arch. Use Home Manager where your modules provide a Nix implementation.</p>
+          <div class="platform-actions">
+            <a href="#workflow" class="button button-cobalt" data-lab-machine="linux" aria-label="Preview Linux setup in the lab">Preview Linux <span aria-hidden="true">→</span></a>
+            <a class="platform-guide" href="{{DOCS_URL}}/docs/guides/machine-profiles">Machine profiles <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <article class="platform-card">
+          <div class="platform-card-heading">
+            <span aria-hidden="true">[&gt;_]</span>
+            <h3>Headless VPS</h3>
+          </div>
+          <p>Use the <code>vps</code> profile on Debian or Ubuntu to start with modules designed for a server.</p>
+          <div class="platform-actions">
+            <a href="#workflow" class="button button-cobalt" data-lab-machine="vps" aria-label="Preview VPS setup in the lab">Preview VPS <span aria-hidden="true">→</span></a>
+            <a class="platform-guide" href="{{DOCS_URL}}/docs/guides/vps">Headless VPS guide <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+<div class="platform-logos" aria-label="Explore platform and adapter guides"><a href="{{DOCS_URL}}/docs/quick-start"><canvas data-ascii-rest="apple" data-ascii-logo="true" role="img" aria-label="macOS ASCII logo">macOS</canvas><span>macOS</span></a><a href="{{DOCS_URL}}/docs/guides/vps"><canvas data-ascii-rest="debian" data-ascii-logo="true" role="img" aria-label="Debian ASCII logo">Debian</canvas><span>Debian</span></a><a href="{{DOCS_URL}}/docs/guides/machine-profiles"><canvas data-ascii-rest="ubuntu" data-ascii-logo="true" role="img" aria-label="Ubuntu ASCII logo">Ubuntu</canvas><span>Ubuntu</span></a><a href="{{DOCS_URL}}/docs/guides/machine-profiles"><canvas data-ascii-rest="arch-linux" data-ascii-logo="true" role="img" aria-label="Arch ASCII logo">Arch</canvas><span>Arch</span></a><a href="{{DOCS_URL}}/docs/reference/adapters"><canvas data-ascii-rest="nixos" data-ascii-logo="true" role="img" aria-label="Nix adapters ASCII logo">Nix adapters</canvas><span>Nix adapters</span></a></div>
+    </section>
+
+    <section class="start-section" id="start" aria-labelledby="start-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">05 / Your next step</p>
+          <h2 id="start-title">Start where you are.</h2>
+          <p>A focused path through the docs, based on the setup you already have.</p>
+        </div>
+        <div class="start-path" data-content-picker>
+          <fieldset class="path-picker" hidden>
+            <legend class="sr-only">Choose your starting point</legend>
+            <label><input type="radio" name="starting-point" value="first" checked><span>I'm starting fresh</span></label>
+            <label><input type="radio" name="starting-point" value="existing"><span>I have dotfiles</span></label>
+            <label><input type="radio" name="starting-point" value="nix"><span>I'm exploring Nix</span></label>
+          </fieldset>
+          <div class="path-content" data-picker-panel="first">
+            <div class="path-intro"><h3>Your first repeatable setup.</h3><p>Start with the blueprint template and try one module before expanding your setup.</p><a class="section-guide guide-link" href="{{DOCS_URL}}/docs/quick-start">Open the quick start <span aria-hidden="true">↗</span></a></div>
+            <ol class="path-steps"><li><span>01</span><div><h4>Fork a blueprint</h4><p>Choose the repository and branch you will own.</p></div></li><li><span>02</span><div><h4>Review the bootstrap</h4><p>Inspect its source, destination, and installation plan.</p></div></li><li><span>03</span><div><h4>Try one module</h4><p>Verify the CLI, preview the changes, then apply.</p></div></li></ol>
+          </div>
+          <div class="path-content" data-picker-panel="existing" hidden>
+            <div class="path-intro"><h3>Bring the files you already use.</h3><p>Move a small group of dotfiles first so you can check exactly which paths the blueprint will manage.</p><a class="section-guide guide-link" href="{{DOCS_URL}}/docs/guides/dotfiles">Open the dotfiles guide <span aria-hidden="true">↗</span></a></div>
+            <ol class="path-steps"><li><span>01</span><div><h4>Choose a tag</h4><p>Group the files under a tag in your blueprint.</p></div></li><li><span>02</span><div><h4>Preview the links</h4><p>Run <code>smu --lsrc</code> and compare each destination.</p></div></li><li><span>03</span><div><h4>Apply and verify</h4><p>Resolve existing files first, then check the resulting links.</p></div></li></ol>
+          </div>
+          <div class="path-content" data-picker-panel="nix" hidden>
+            <div class="path-intro"><h3>Migrate one piece at a time.</h3><p>Compare module coverage and test a hybrid configuration before switching your primary machine.</p><a class="section-guide guide-link" href="{{DOCS_URL}}/docs/guides/nix-migration">Open the migration guide <span aria-hidden="true">↗</span></a></div>
+            <ol class="path-steps"><li><span>01</span><div><h4>Compare coverage</h4><p>Check which modules support your intended Nix adapter.</p></div></li><li><span>02</span><div><h4>Draft separately</h4><p>Generate and review a starter configuration in a test checkout.</p></div></li><li><span>03</span><div><h4>Preflight one host</h4><p>Review unsupported modules and fallback decisions before applying.</p></div></li></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="orbit-section" id="make-it-yours" aria-labelledby="orbit-title">
+      <div class="orbit-card" data-ascii-scene>
+        <div class="orbit-art" aria-hidden="true">
+          <img src="/orbit-glyphs.svg" width="900" height="600" alt="" loading="lazy">
+          <canvas data-orbit-landscape></canvas>
+        </div>
+        <div class="wrap orbit-inner">
+          <div class="orbit-content">
+          <p class="eyebrow">Make it yours</p>
+          <h2 id="orbit-title">Your setup.<br>Your repository.</h2>
+          <p>Fork the starter blueprint, choose your modules, and keep your configuration in a repository you control.</p>
+          <div class="actions">
+            <a class="button orbit-primary" href="https://github.com/smeltery/set-me-up-blueprint/fork">Fork the blueprint</a>
+            <a class="button orbit-secondary" href="{{DOCS_URL}}/docs/guides/blueprints">Blueprint guide</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-layout">
+        <div class="section-heading">
+          <p class="eyebrow">06 / Field notes</p>
+          <h2 id="faq-title">Before the first run.</h2>
+          <p>Bring over your dotfiles, check the plan, and know where to look if setup stalls.</p>
+        </div>
+        <div class="faq-list">
+          <details id="field-note-dotfiles" open>
+            <summary><span class="note-topic">Bring your dotfiles</span><span>Can I bring my existing dotfiles?</span></summary>
+            <div class="note-answer">
+              <p>Start from a blueprint you control and add your files to it. In the <code>rcm</code> flow, tags group files and <code>smu --lsrc</code> previews the links.</p>
+              <div class="note-actions">
+                <a class="guide-link" href="{{DOCS_URL}}/docs/guides/dotfiles">Read the dotfiles guide <span aria-hidden="true">→</span></a>
+                <a class="note-permalink" href="#field-note-dotfiles" aria-label="Link to note: Can I bring my existing dotfiles?">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                </a>
+              </div>
+            </div>
+          </details>
+          <details id="field-note-plan">
+            <summary><span class="note-topic">Review the plan</span><span>What does a plan actually show?</span></summary>
+            <div class="note-answer">
+              <p><code>smu plan</code> summarizes the blueprint, adapter, modules, and potential dotfile conflicts. Review that output and the module sources before applying anything.</p>
+              <div class="note-actions">
+                <a class="guide-link" href="{{DOCS_URL}}/docs/quick-start">Read the quick start <span aria-hidden="true">→</span></a>
+                <a class="note-permalink" href="#field-note-plan" aria-label="Link to note: What does a plan actually show?">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                </a>
+              </div>
+            </div>
+          </details>
+          <details id="field-note-updates">
+            <summary><span class="note-topic">Keep it current</span><span>How do updates work?</span></summary>
+            <div class="note-answer">
+              <p>Update the blueprint, installer, and modules separately or preview a combined update with <code>smu update --all --dry-run</code>.</p>
+              <div class="note-actions">
+                <a class="guide-link" href="{{DOCS_URL}}/docs/guides/updates">Read the updates guide <span aria-hidden="true">→</span></a>
+                <a class="note-permalink" href="#field-note-updates" aria-label="Link to note: How do updates work?">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                </a>
+              </div>
+            </div>
+          </details>
+          <details id="field-note-troubleshoot">
+            <summary><span class="note-topic">Troubleshoot</span><span>Where do I look when setup stalls?</span></summary>
+            <div class="note-answer">
+              <p>Start with <code>smu doctor</code> and the failing command’s output. Check that the module matches your platform and selected provisioning adapter.</p>
+              <div class="note-actions">
+                <a class="guide-link" href="{{DOCS_URL}}/docs/guides/troubleshooting">Read the troubleshooting guide <span aria-hidden="true">→</span></a>
+                <a class="note-permalink" href="#field-note-troubleshoot" aria-label="Link to note: Where do I look when setup stalls?">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                </a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  {{FOOTER}}
+</body>
+</html>

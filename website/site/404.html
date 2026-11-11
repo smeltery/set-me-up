@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — set-me-up</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/shell.css">
+  <link rel="stylesheet" href="/navigation-reference.css">
+  <link rel="stylesheet" href="/search.css">
+  <link rel="stylesheet" href="/terminal-ui.css">
+  <link rel="stylesheet" href="/not-found.css">
+  <script src="/not-found.js" type="module"></script>
+  <script src="/search.js" type="module"></script>
+  <script src="/navigation.js" defer></script>
+</head>
+<body id="top" class="error-page marketing-site">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{HEADER}}
+  <main id="main" class="wrap error-content" tabindex="-1">
+    <div id="not-found-scene" data-docs-url="{{DOCS_URL}}">
+      <div class="not-found-fallback">
+        <p class="eyebrow">404 / Off trail</p>
+        <h1>Page not found.</h1>
+        <p>The page may have moved, or the link may be out of date.</p>
+        <div class="actions">
+          <a class="button button-light" href="/">Back to home</a>
+          <a class="button button-hero-secondary" href="{{DOCS_URL}}/docs">Browse the docs</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  {{FOOTER}}
+</body>
+</html>

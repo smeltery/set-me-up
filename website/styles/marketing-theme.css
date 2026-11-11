@@ -1,0 +1,368 @@
+/* Content and artwork consume the same semantic theme as the asciicn shell. */
+.marketing-content {
+  --ink: var(--foreground);
+  --frost: var(--background);
+  --cobalt: var(--primary);
+  --highlight: var(--selection);
+  --fern: var(--accent-mid);
+  --canopy: var(--primary);
+  --ice: var(--muted-foreground);
+  --slate: var(--muted-foreground);
+  --line: var(--border);
+  --canopy-wash: linear-gradient(125deg, var(--card), var(--background) 75%);
+  --forest-surface: linear-gradient(135deg, var(--card), var(--background) 72%);
+  --highlight-wash: var(--accent);
+  --syntax-command: var(--primary);
+  --syntax-flag: #65582c;
+  --syntax-value: #356b4b;
+  --syntax-operator: #755323;
+  --scene-ink: #356b4b;
+  --ember-ink: #284e36;
+  --ember-flame: #953b1e;
+  --orbit-ink: #793317;
+  --orbit-accent: #56421b;
+  --scene-flame: #a75c2b;
+  --scene-accent: #855b25;
+  --scene-moss: #456449;
+  --scene-fern: #77945c;
+  --scene-canopy: #a5b59c;
+  --scene-scrim: var(--background);
+  /* Ease the opacity at both ends so the fade has no visible shoulder. */
+  --hero-bottom-fade: linear-gradient(0deg,
+    var(--background),
+    color-mix(in oklab, var(--background) 93%, transparent) 2%,
+    color-mix(in oklab, var(--background) 74%, transparent) 4%,
+    color-mix(in oklab, var(--background) 50%, transparent) 6%,
+    color-mix(in oklab, var(--background) 26%, transparent) 8%,
+    color-mix(in oklab, var(--background) 7%, transparent) 10%,
+    transparent 12%);
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.dark .marketing-content {
+  --syntax-flag: #e0c58b;
+  --syntax-value: #b2d7b0;
+  --syntax-operator: #e6c28b;
+  --scene-ink: #f9d9a0;
+  --ember-ink: var(--scene-ink);
+  --ember-flame: var(--scene-flame);
+  --orbit-ink: var(--scene-flame);
+  --orbit-accent: var(--scene-accent);
+  --scene-flame: #ef9b53;
+  --scene-accent: #e0c58b;
+  --scene-moss: #4a6542;
+  --scene-fern: #b4bf85;
+  --scene-canopy: #e4e6bc;
+}
+
+.marketing-content :is(a, button, input, summary):focus-visible {
+  outline-color: var(--ring);
+}
+.marketing-content a { color: inherit; }
+.marketing-content :is(.hero, .cta-section, .orbit-section, .orbit-card, .site-footer) {
+  color: var(--foreground);
+  background: var(--background);
+}
+.marketing-content :is(.hero .eyebrow, .section-heading .eyebrow, .overview-heading .eyebrow,
+  .cta-section .eyebrow, .orbit-content .eyebrow, .signal) { color: var(--primary); }
+.marketing-content .signal { background: currentColor; box-shadow: 0 0 13px color-mix(in oklab, var(--primary) 25%, transparent); }
+.marketing-content .lede { color: var(--foreground); }
+.marketing-content .lede code { color: var(--primary); }
+.marketing-content :is(.plate-label, .hero-console-note, .section-heading > p:last-child,
+  .blueprint-layout .section-heading > p:not(.eyebrow), .platform-card p, .path-intro > p,
+  .path-steps p, .note-answer p, .note-topic, .feature-detail, .feature-status,
+  .footer-brand p, .launch-intro > p:last-child, .cta-content > p:not(.eyebrow, .sr-only),
+  .orbit-content > p:not(.eyebrow), .footer-group h2, .forest-scenes > span,
+  .lab-copy > p:not(.lab-step), .demo-status) { color: var(--muted-foreground); }
+.marketing-content :is(.section-guide, .feature-mark, .platform-card-heading span,
+  .path-steps li > span, .lab-step, .stage-picker small) { color: var(--primary); }
+
+/* Fade the native forest toward the page's paper, rather than forcing night colors. */
+.marketing-content .hero::after {
+  background:
+    var(--hero-bottom-fade),
+    linear-gradient(90deg, color-mix(in oklab, var(--scene-scrim) var(--hero-edge, 88%), transparent),
+      color-mix(in oklab, var(--scene-scrim) var(--hero-wash, 76%), transparent) 28%, transparent 66%),
+    linear-gradient(180deg, color-mix(in oklab, var(--scene-scrim) 20%, transparent), transparent 20%);
+}
+
+.marketing-content :is(.blueprint-section, .support, .guide) { background: var(--background); }
+.marketing-content :is(.workbench, .start-section, .faq-section) { background: var(--canopy-wash); }
+.marketing-content :is(.setup-lab, .start-path, .platform-card, .faq-list details) {
+  color: var(--foreground);
+  background: var(--card);
+  border-color: var(--border);
+}
+.marketing-content :is(.lab-controls, .stage-picker, .lab-note, .plate-command,
+  .blueprint-browser-bar, .explorer-bar, .terminal-caption) { background: var(--muted); }
+.marketing-content :is(.lab-note, .plate-command, .blueprint-browser-bar,
+  .terminal-caption, .explorer-bar, .file-path) { color: var(--muted-foreground); }
+.marketing-content :is(.plate-illustration, .blueprint-browser, .file-explorer) { background: var(--code); }
+.marketing-content :is(.blueprint-browser .rest-file-tree, .file-explorer) { color: var(--code-foreground); }
+.marketing-content .blueprint-browser-bar { border-color: var(--border); }
+.marketing-content .platform-card { border-top-color: var(--primary); }
+.marketing-content .platform-card:nth-child(2) { border-top-color: var(--accent-mid); }
+.marketing-content .platform-card:nth-child(3) { border-top-color: var(--scene-accent); }
+
+/* Solid primary and quiet secondary actions share the shell's contrast pairs. */
+.marketing-content :is(.button-cobalt, .button-light, .orbit-primary) {
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+.marketing-content :is(.button-cobalt, .button-light, .orbit-primary):hover {
+  background: color-mix(in oklab, var(--primary) 90%, var(--foreground));
+}
+.marketing-content :is(.button-hero-secondary, .cta-secondary, .orbit-secondary,
+  .guide-link, .platform-guide, .section-guide, .forest-scenes button) {
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  border-color: var(--input);
+}
+.marketing-content :is(.button-hero-secondary, .cta-secondary, .orbit-secondary,
+  .guide-link, .platform-guide, .section-guide, .forest-scenes button):hover {
+  color: var(--accent-foreground);
+  background: var(--accent);
+  border-color: var(--ring);
+}
+.marketing-content .button-hero-secondary svg { color: currentColor; }
+.marketing-content .forest-scenes button[aria-pressed="true"] {
+  color: var(--primary-foreground);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.marketing-content :is(.plate-command button, .transcript-label button, .lab-back,
+  .launch-command button) { color: var(--primary); background: transparent; }
+.marketing-content :is(.plate-command button, .transcript-label button,
+  .lab-back, .launch-command button):hover { color: var(--accent-foreground); background: var(--accent); }
+.marketing-content button:disabled { color: var(--muted-foreground); opacity: .5; }
+
+.marketing-content :is(.launch-picker label > span, .lab-picker label > span,
+  .path-picker label > span, .file-picker label > span) { color: var(--muted-foreground); }
+.marketing-content :is(.launch-picker, .file-picker) { background: var(--muted); }
+.marketing-content :is(.launch-picker label:hover > span, .lab-picker label:hover > span,
+  .file-picker label:hover > span, .path-picker label:hover > input:not(:checked) + span) {
+  color: var(--accent-foreground); background: var(--accent);
+}
+.marketing-content :is(.launch-picker input:checked + span, .lab-picker input:checked + span,
+  .path-picker input:checked + span, .file-picker input:checked + span) {
+  color: var(--primary-foreground);
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: inset 0 -2px color-mix(in oklab, var(--primary-foreground) 60%, transparent);
+}
+.marketing-content :is(.path-picker input:checked + span::after, .file-picker input:checked + span small) { color: var(--primary-foreground); }
+.marketing-content :is(.file-picker small, .file-path) { color: var(--muted-foreground); }
+.marketing-content .file-detail > a { color: var(--primary); }
+.marketing-content .file-detail > a:hover { color: var(--foreground); }
+.marketing-content .file-key { color: var(--syntax-flag); }
+.marketing-content .file-value { color: var(--syntax-value); }
+
+/* Every terminal and code block uses the same theme-aware paper and ink. */
+.marketing-content :is(.setup-terminal, .lab-terminal, .feature-tile) {
+  --ascii-paper: var(--code);
+  --ascii-ink: var(--code-foreground);
+  --ascii-grey: var(--muted-foreground);
+  --ascii-green: var(--syntax-value);
+  color: var(--code-foreground);
+}
+.marketing-content :is(.setup-shell, .setup-terminal, .launch-command, .transcript,
+  .lab-terminal, .agent-prompt-fallback pre) { color: var(--code-foreground); background: var(--code); border-color: var(--border); }
+.marketing-content :is(.setup-terminal [data-slot="ascii-box-label"], .launch-command > span,
+  .transcript-label, .lab-terminal button) { color: var(--muted-foreground); }
+.marketing-content .syntax-command { color: var(--syntax-command); }
+.marketing-content .syntax-flag { color: var(--syntax-flag); }
+.marketing-content .syntax-value { color: var(--syntax-value); }
+.marketing-content .syntax-operator { color: var(--syntax-operator); }
+.marketing-content .feature-tile { --feature-frame: var(--primary); }
+.marketing-content [data-feature-tile="plan"] { --feature-frame: var(--scene-accent); }
+.marketing-content .feature-box [data-slot="ascii-box-label"] { color: var(--feature-frame); }
+.marketing-content .feature-row[data-active="true"] { color: var(--accent-foreground); background: var(--code-highlight); }
+.marketing-content [data-feature-tile="plan"] .feature-row[data-active="true"] {
+  background: color-mix(in oklab, var(--scene-accent) 12%, var(--code));
+  box-shadow: inset 2px 0 var(--scene-accent);
+}
+
+.marketing-content .faq-list summary:hover, .marketing-content .faq-list details[open] summary { background: var(--accent); }
+.marketing-content .faq-list summary::after { color: var(--primary); background: var(--secondary); }
+.marketing-content .faq-list details:is([open], :target) { border-color: var(--ring); }
+.marketing-content .note-permalink:hover { color: var(--accent-foreground); background: var(--accent); }
+.marketing-content .agent-prompt-fallback { color: var(--foreground); }
+
+/* Atmospheric plates retain their native hues while the foreground follows the theme. */
+.marketing-content .cta-art { mask-image: linear-gradient(90deg, transparent 25%, #000 90%); }
+.marketing-content .site-footer { border-top: 1px solid var(--border); }
+.marketing-content .launch { background: var(--background); }
+.marketing-content .launch-art { mask-image: none; }
+.marketing-content .launch-art:has([data-forest-gallery])::after {
+  background:
+    linear-gradient(90deg, color-mix(in oklab, var(--background) var(--launch-edge, 100%), transparent), color-mix(in oklab, var(--background) var(--launch-wash, 92%), transparent) var(--launch-wash-stop, 30%), transparent var(--launch-clear-stop, 72%)),
+    linear-gradient(180deg, var(--background), transparent 18%, transparent 72%, color-mix(in oklab, var(--background) 70%, transparent) 92%, var(--background));
+}
+.marketing-content .footer-rail { color: var(--foreground); background: var(--muted); border-color: var(--border); }
+.marketing-content .footer-group a:is(:hover, :focus-visible),
+.marketing-content .footer-rail a:not(.rail-mark):is(:hover, :focus-visible) {
+  color: var(--accent-foreground); background: var(--accent);
+}
+.marketing-content :is(.footer-group a span, .footer-rail a span) { color: currentColor; }
+.marketing-content .rail-mark { color: var(--primary-foreground); background: var(--primary); }
+.marketing-content .footer-wordmark { color: var(--foreground); font-size: 1.2rem; }
+
+@media (max-width: 700px) {
+  .marketing-content .hero::after {
+    background:
+      var(--hero-bottom-fade),
+      linear-gradient(180deg,
+        color-mix(in oklab, var(--scene-scrim) var(--hero-mobile-top, 76%), transparent),
+        color-mix(in oklab, var(--scene-scrim) var(--hero-mobile-wash, 82%), transparent) 60%,
+        color-mix(in oklab, var(--scene-scrim) 30%, transparent));
+  }
+}
+.marketing-content :is(.launch-picker, .lab-picker, .file-picker, .path-picker) input:focus-visible + span {
+  outline: 2px solid var(--ring);
+  outline-offset: -3px;
+}
+.marketing-content .lab-picker input:checked + span small { color: inherit; }
+.marketing-content .hero .hero-console-note,
+.marketing-content .launch :is(.hero-console-note, .launch-intro > p:last-child) { color: var(--foreground); }
+
+/* Keep the caption readable without bleaching the surrounding landscape. */
+.marketing-content :is(.hero, .launch) .hero-console-note {
+  padding: .45rem .6rem;
+  border-radius: .3rem;
+  background: color-mix(in oklab, var(--background) 96%, transparent);
+}
+@media (max-width: 700px) {
+  .marketing-content .launch-art:has([data-forest-gallery])::after {
+    background: linear-gradient(180deg, var(--background),
+      color-mix(in oklab, var(--background) 90%, transparent) 40%,
+      color-mix(in oklab, var(--background) 25%, transparent) 72%, color-mix(in oklab, var(--background) 70%, transparent) 92%, var(--background));
+  }
+}
+
+.light .marketing-content {
+  --hero-edge: 80%;
+  --hero-wash: 66%;
+  --hero-mobile-top: 70%;
+  --hero-mobile-wash: 74%;
+  --launch-edge: 88%;
+  --launch-wash: 78%;
+  --launch-wash-stop: 22%;
+  --launch-clear-stop: 64%;
+}
+
+/* The forest stays immersive in either theme; light controls retain their paper surfaces. */
+.light .marketing-content .hero {
+  --scene-scrim: #091810;
+  --hero-edge: 90%;
+  --hero-wash: 74%;
+  --hero-mobile-top: 68%;
+  --hero-mobile-wash: 82%;
+  color: #f5f3e8;
+  background: #091810;
+}
+.light .marketing-content .hero .lede { color: #f5f3e8; }
+.light .marketing-content .hero :is(.eyebrow, .signal, .lede code) { color: #d7dfb2; }
+:is(.light, .dark) .marketing-content .hero .hero-console .hero-console-note {
+  color: #e2e8d6;
+  background: linear-gradient(90deg, transparent, rgb(32 56 39 / 58%) 5%, rgb(32 56 39 / 58%) 95%, transparent);
+}
+.light .marketing-content .hero .button-light {
+  color: #14231b;
+  background: #d7dfb2;
+}
+.light .marketing-content .hero .button-light:hover { background: #e8edcd; }
+.light .marketing-content .hero .button-hero-secondary {
+  color: #f5f3e8;
+  background: rgb(20 39 28 / 92%);
+  border-color: #839775;
+}
+.light .marketing-content .hero .button-hero-secondary:hover {
+  color: #f5f3e8;
+  background: #304b36;
+  border-color: #d7dfb2;
+}
+
+@media (max-width: 700px) {
+  .light .marketing-content .cta-art { opacity: 1; }
+}
+
+/* Setup panels share a compact control hierarchy in either theme. */
+.marketing-content .setup-terminal {
+  border: 1px solid var(--border);
+  border-radius: .65rem;
+  overflow: hidden;
+  padding: .4rem;
+}
+.marketing-content .setup-terminal .launch-picker {
+  gap: .25rem;
+  padding: .45rem;
+  border-bottom: 1px solid var(--border);
+  border-radius: .3rem .3rem 0 0;
+  background: var(--code);
+}
+.marketing-content .setup-terminal .launch-picker label > span {
+  min-height: 38px;
+  padding: .5rem .8rem;
+  border-radius: .3rem;
+  font-size: .78rem;
+  transition: color 150ms, background 150ms;
+}
+.marketing-content .setup-terminal .launch-picker input:checked + span {
+  color: var(--primary-foreground);
+  background: var(--primary);
+  box-shadow: none;
+}
+.marketing-content .setup-command-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .25rem .6rem;
+  padding: .65rem .85rem .25rem;
+  color: var(--muted-foreground);
+  font: .72rem/1.4 var(--mono);
+}
+.marketing-content .setup-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  min-height: 36px;
+  min-width: 5.6rem;
+  padding: .4rem .65rem;
+  border: 1px solid var(--input);
+  border-radius: .3rem;
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: pointer;
+  font: inherit;
+}
+.marketing-content .setup-copy:hover {
+  color: var(--accent-foreground);
+  background: var(--accent);
+  border-color: var(--ring);
+}
+.marketing-content .hero-console .setup-terminal .launch-command {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .65rem;
+  padding: .5rem .85rem 1rem;
+  font-size: clamp(.75rem, 1.05vw, .85rem);
+  line-height: 1.65;
+  background: var(--code);
+}
+.marketing-content .setup-terminal .smu-terminal-title {
+  gap: .65rem;
+  padding-inline: .45rem;
+  color: var(--muted-foreground);
+}
+.marketing-content .setup-terminal .smu-terminal-lights {
+  gap: .3rem;
+  padding-inline: .15rem;
+  font-size: .7em;
+}
+.marketing-content .setup-copy + .agent-prompt-fallback { flex-basis: 100%; min-width: 0; }
+@media (max-width: 400px) {
+  .marketing-content .setup-terminal .launch-picker { gap: .15rem; padding: .35rem; }
+  .marketing-content .setup-terminal .launch-picker label > span { padding-inline: .5rem; font-size: .72rem; }
+}

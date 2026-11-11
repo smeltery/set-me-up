@@ -1,0 +1,133 @@
+{
+  "path": "/docs",
+  "title": "Overview",
+  "group": "Start here",
+  "order": 0,
+  "description": "Define your setup in a version-controlled blueprint, then use smu to apply the modules each machine needs.",
+  "hero": {
+    "eyebrow": "SET-ME-UP DOCUMENTATION",
+    "title": "Your setup,",
+    "emphasis": "repeatable.",
+    "notice": "Set up dotfiles, packages, and preferences from a blueprint you own."
+  },
+  "sections": [
+    {
+      "id": "choose-a-path",
+      "title": "Choose a setup path",
+      "paragraphs": [
+        "Choose Quick start when you want to bring your personal tools and dotfiles to a workstation. For a fresh Debian or Ubuntu server over SSH, use the Headless VPS guide for a smaller package baseline.",
+        "Start with the rcm path when your blueprint uses shell modules, package lists, and dotfile symlinks. Check Provisioning adapters if you already manage your user environment or operating system with Nix."
+      ],
+      "links": [
+        {
+          "label": "Quick start",
+          "href": "/docs/quick-start",
+          "icon": "terminal"
+        },
+        {
+          "label": "Headless VPS",
+          "href": "/docs/guides/vps",
+          "icon": "server"
+        },
+        {
+          "label": "Provisioning adapters",
+          "href": "/docs/reference/adapters",
+          "icon": "shell"
+        }
+      ]
+    },
+    {
+      "id": "how-it-fits",
+      "title": "How it fits together",
+      "paragraphs": [
+        "The blueprint is your Git repository. It contains dotfiles, module selections, and the settings that tell smu how to provision them. The bootstrap downloads that repository and its selected submodules, including a bundled copy of the installer.",
+        "A module is a unit of work, such as a package list or a setup script. A profile selects a group of modules, while an adapter determines how to apply them. For example, a desktop profile can use Home Manager for modules that publish Nix definitions and rcm for a shell module during a hybrid migration."
+      ],
+      "diagram": {
+        "title": "From blueprint to provisioned machine",
+        "actors": ["You", "Blueprint bootstrap", "smu"],
+        "steps": [
+          [0, 1, "Review and preview"],
+          [0, 1, "Install the chosen blueprint"],
+          [1, 2, "Set up the CLI"],
+          [0, 2, "Plan and apply selected modules"]
+        ],
+        "caption": "Keep your blueprint under version control and review changes before applying them."
+      }
+    },
+    {
+      "id": "workflow",
+      "title": "A typical setup session",
+      "paragraphs": [
+        "Review the target repository and the scripts it runs. Install the blueprint into the directory you intend to keep, then use the bundled CLI to inspect the profile and module state.",
+        "Apply one reviewed module first. Check that it did what you expected before adding the rest. When you move to another machine, start with the same blueprint and choose the profile that fits that host."
+      ],
+      "links": [
+        {
+          "label": "Customize dotfiles",
+          "href": "/docs/guides/dotfiles",
+          "icon": "folder"
+        },
+        {
+          "label": "Choose a machine profile",
+          "href": "/docs/guides/machine-profiles",
+          "icon": "server"
+        }
+      ]
+    },
+    {
+      "id": "maintain",
+      "title": "Maintain a setup",
+      "paragraphs": [
+        "Check what a module changes before applying it. Preview updates to an installed checkout before switching to new configuration.",
+        "Use the status report to distinguish missing packages from script modules that have no detection marker. If an update is blocked by local work or a provisioning step fails, review the relevant diagnostic before retrying."
+      ],
+      "links": [
+        {
+          "label": "Choose modules",
+          "href": "/docs/guides/modules",
+          "icon": "folder"
+        },
+        {
+          "label": "Update a setup",
+          "href": "/docs/guides/updates",
+          "icon": "up"
+        },
+        {
+          "label": "Trust and safety",
+          "href": "/docs/reference/trust",
+          "icon": "shell"
+        },
+        {
+          "label": "Troubleshoot a setup",
+          "href": "/docs/guides/troubleshooting",
+          "icon": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "continue-learning",
+      "title": "Continue with a guided workflow",
+      "paragraphs": [
+        "Use the guides below once you understand the basic blueprint and module flow. They cover the review decisions around a setup, the differences to recheck on another host, and the verification routine that makes future changes predictable."
+      ],
+      "links": [
+        {
+          "label": "Review a setup plan",
+          "href": "/docs/guides/review-a-plan",
+          "icon": "folder"
+        },
+        {
+          "label": "Move to a new machine",
+          "href": "/docs/guides/new-machine",
+          "icon": "server"
+        },
+        {
+          "label": "Build a repeatable setup routine",
+          "href": "/docs/guides/setup-routine",
+          "icon": "up"
+        }
+      ]
+    }
+  ]
+}

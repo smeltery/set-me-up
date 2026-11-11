@@ -1,7 +1,7 @@
 <!-- markdownlint-disable-next-line MD033 -->
 # <img src="brand/mark.svg" width="28" height="28" alt="Terminal prompt logo"> set-me-up
 
-![Your setup, repeatable. A moonlit ASCII mountain range.](brand/social-card.png)
+![Your setup, repeatable. An ASCII redwood forest in pale canopy light.](brand/social-card.png)
 
 [![Lint](https://github.com/smeltery/set-me-up/workflows/Lint/badge.svg)](https://github.com/smeltery/set-me-up/actions/workflows/lint.yml)
 [![Tests](https://github.com/smeltery/set-me-up/workflows/Tests/badge.svg)](https://github.com/smeltery/set-me-up/actions/workflows/tests.yml)
@@ -15,17 +15,20 @@ the modules each machine needs.
 [Install set-me-up][install] · [Clone the repo collection](#quick-setup) ·
 [Set up a VPS](#vps-setup)
 
-[install]: https://github.com/smeltery/set-me-up-docs#quick-start
+[install]: https://set-me-up-docs.vercel.app/docs/quick-start
 
 ## Documentation
 
-For detailed information about how set-me-up works, see the [documentation](https://github.com/smeltery/set-me-up-docs).
+Read the [documentation site](https://set-me-up-docs.vercel.app/) for setup,
+blueprint, and `smu` guides.
 
 For information about the setup and update scripts, see [scripts/SCRIPTS.md](scripts/SCRIPTS.md).
 For the generated repository, route, capability, and validator index, see
 [REPOSITORIES.md](REPOSITORIES.md).
 
 For logos, colors, and project copy, see the [brand kit](brand/README.md).
+The [marketing site source](website/) lives in this repository and uses the
+same Next.js/React stack and shared asciicn navigation as the docs.
 
 For a headless Ubuntu/Debian VPS such as a DigitalOcean Droplet, use the
 first-class VPS path documented in [scripts/VPS.md](scripts/VPS.md).
@@ -106,6 +109,7 @@ set-me-up/
 ├── installer/           # Installation scripts
 ├── tests/               # Docker-based provisioning test scenarios
 ├── utilities/           # Utility scripts
+├── website/             # Marketing site
 ├── shared/
 │   └── ai-config/       # Shared AI agent/skill definitions
 ├── modules/

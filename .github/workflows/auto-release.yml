@@ -1,0 +1,56 @@
+name: auto-release
+
+on:
+  workflow_run:
+    workflows: ["Marketing CI"]
+    branches: [master]
+    types: [completed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-master
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  cut-release:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Tag validated head and publish release notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VALIDATED_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          git fetch origin master --tags
+          if [ "$VALIDATED_SHA" != "$(git rev-parse origin/master)" ]; then
+            echo 'A newer master commit exists; leaving release to its CI run.'
+            exit 0
+          fi
+          tag="$(git tag --points-at "$VALIDATED_SHA" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)"
+          if [ -z "$tag" ]; then
+            latest="$(git tag --list | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)"
+            if [ -z "$latest" ]; then
+              tag=v0.1.0
+            else
+              tag="${latest%.*}.$((${latest##*.} + 1))"
+            fi
+            git tag "$tag" "$VALIDATED_SHA"
+            git push origin "$tag"
+          fi
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --verify-tag --generate-notes
+          fi

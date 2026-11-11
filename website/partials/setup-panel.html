@@ -1,0 +1,32 @@
+<div class="hero-console" data-command-panel>
+  <div class="setup-shell">
+    <div class="terminal-title setup-shell-title"><span class="terminal-lights" aria-hidden="true">● ● ●</span> Setup shell</div>
+    <div class="setup-shell-content">
+      <fieldset class="launch-picker" hidden>
+        <legend class="sr-only">Choose your setup platform</legend>
+        <label><input type="radio" name="{{PANEL_NAME}}" data-guide="{{DOCS_URL}}/docs/quick-start" data-label="Read the quick start" data-note="Download the starter bootstrap and follow the guide to review and preview your setup." checked><span>macOS</span></label>
+        <label><input type="radio" name="{{PANEL_NAME}}" data-guide="{{DOCS_URL}}/docs/quick-start#prerequisites" data-label="Read the Linux quick start" data-note="Download the starter bootstrap. The quick start covers Debian, Ubuntu, and Arch."><span>Linux</span></label>
+        <label><input type="radio" name="{{PANEL_NAME}}" data-command="sudo apt-get update &amp;&amp; sudo apt-get install bash curl git ca-certificates python3" data-guide="{{DOCS_URL}}/docs/guides/vps" data-label="Read the VPS guide" data-note="Install the prerequisites on your Debian or Ubuntu host, then follow the VPS guide."><span>Headless VPS</span></label>
+      </fieldset>
+      <div class="launch-command">
+        <span aria-hidden="true">$</span>
+        <code>curl -fLo smu-bootstrap.sh https://raw.githubusercontent.com/smeltery/set-me-up-blueprint/master/dotfiles/modules/install.sh</code>
+        <button type="button" aria-label="Copy getting started command" hidden>Copy</button>
+      </div>
+    </div>
+    <div class="setup-terminal"></div>
+  </div>
+  <p class="hero-console-note">Download the starter bootstrap and follow the guide to review and preview your setup.</p>
+  <p class="sr-only launch-status" role="status"></p>
+  <div class="actions">
+    <a class="button button-light launch-guide" href="{{DOCS_URL}}/docs/quick-start"><span>Read the quick start</span><span aria-hidden="true">↗</span></a>
+    <button class="button button-hero-secondary agent-prompt-button" type="button" data-copy-agent-prompt hidden>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></svg>
+      <span>Copy agent prompt</span>
+    </button>
+  </div>
+  <details class="agent-prompt-fallback" hidden>
+    <summary>Copy the prompt manually</summary>
+    <pre tabindex="0" aria-label="Setup prompt to copy"></pre>
+  </details>
+</div>

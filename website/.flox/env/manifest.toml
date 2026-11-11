@@ -1,0 +1,28 @@
+schema-version = "1.19.0"
+
+[install]
+bun.pkg-path = "bun"
+node.pkg-path = "nodejs_24"
+python.pkg-path = "python3"
+git.pkg-path = "git"
+git.outputs = "all"
+gh.pkg-path = "gh"
+pre-commit.pkg-path = "pre-commit"
+pre-commit.outputs = "all"
+actionlint.pkg-path = "actionlint"
+shellcheck.pkg-path = "shellcheck"
+shellcheck.outputs = "all"
+
+[vars]
+NEXT_TELEMETRY_DISABLED = "1"
+
+[hook]
+on-activate = '''
+  echo "set-me-up website: bun install --frozen-lockfile && bun run ci"
+'''
+
+[services.preview]
+command = "bun run dev"
+
+[options]
+systems = ["aarch64-darwin", "x86_64-darwin", "aarch64-linux", "x86_64-linux"]

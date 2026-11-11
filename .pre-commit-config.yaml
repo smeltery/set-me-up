@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: website-ci
+        name: Marketing site CI
+        entry: flox activate --dir website -- bash -c 'cd "$FLOX_ENV_PROJECT" && bun run ci'
+        language: system
+        files: ^(website/|\.github/workflows/website\.yml|\.pre-commit-config\.yaml)
+        pass_filenames: false
+      - id: workflow-syntax
+        name: GitHub Actions syntax
+        entry: flox activate --dir website -- actionlint -shellcheck=""
+        language: system
+        files: ^\.github/workflows/
+        pass_filenames: false

@@ -1,0 +1,81 @@
+{
+  "path": "/docs/guides",
+  "title": "Guides",
+  "group": "Guides",
+  "order": 0,
+  "description": "Learn how to build, review, and adapt a repeatable setup from the files and modules in your blueprint.",
+  "sections": [
+    {
+      "id": "build",
+      "title": "Build your setup",
+      "paragraphs": [
+        "Start by understanding where configuration lives and how the installer resolves module implementations. These guides take you from a blueprint fork to a small, reviewed setup you can verify on one machine."
+      ],
+      "links": [
+        {
+          "label": "Blueprints",
+          "href": "/docs/guides/blueprints",
+          "icon": "folder"
+        },
+        {
+          "label": "Modules",
+          "href": "/docs/guides/modules",
+          "icon": "shell"
+        },
+        {
+          "label": "Review a setup plan",
+          "href": "/docs/guides/review-a-plan",
+          "icon": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "customize",
+      "title": "Customize the pieces",
+      "paragraphs": [
+        "Bring your own dotfiles, add a focused module, and separate the responsibilities of your machines. Keep preferences and platform differences explicit so you can review them before the next installation."
+      ],
+      "links": [
+        {
+          "label": "Organize and link dotfiles",
+          "href": "/docs/guides/dotfiles",
+          "icon": "folder"
+        },
+        {
+          "label": "Author a module",
+          "href": "/docs/guides/author-a-module",
+          "icon": "shell"
+        },
+        {
+          "label": "Choose machine profiles",
+          "href": "/docs/guides/machine-profiles",
+          "icon": "server"
+        },
+        {
+          "label": "Customize themes and prompts",
+          "href": "/docs/guides/themes-and-prompts",
+          "icon": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "adapt",
+      "title": "Adapt an existing setup",
+      "paragraphs": [
+        "Recheck coverage when changing adapters or moving to a new host. A versioned blueprint makes your intent portable; the new environment still needs its own compatibility and acceptance checks."
+      ],
+      "links": [
+        {
+          "label": "Migrate toward Nix",
+          "href": "/docs/guides/nix-migration",
+          "icon": "up"
+        },
+        {
+          "label": "Move to a new machine",
+          "href": "/docs/guides/new-machine",
+          "icon": "server"
+        }
+      ]
+    }
+  ]
+}

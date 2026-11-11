@@ -1,0 +1,134 @@
+{
+  "path": "/docs/quick-start",
+  "title": "Quick start",
+  "group": "Start here",
+  "order": 1,
+  "description": "Set up your first machine. Choose a blueprint, review the bootstrap, verify the installed CLI, and try one module.",
+  "sections": [
+    {
+      "id": "prerequisites",
+      "title": "Before you start",
+      "paragraphs": [
+        "Use a macOS, Debian or Ubuntu, or Arch machine with Bash, curl, Git, and Python 3 available. The examples use Bash syntax. Run them in the same Bash session so the blueprint settings and the temporary smu function stay available.",
+        "Choose a destination before running the bootstrap. It defaults to $HOME/set-me-up. For a custom destination, choose a path whose parent directory exists, export SMU_HOME_DIR, and keep using it in later sessions. Some module scripts use the default path directly, so review them before choosing a custom one."
+      ],
+      "notice": "On macOS, complete any required Xcode Command Line Tools and Rosetta setup first. The bootstrap can attempt those prerequisite installations before it reaches --plan or --doctor.",
+      "language": "Terminal",
+      "code": "command -v bash curl git python3"
+    },
+    {
+      "id": "fork",
+      "title": "Fork and configure a blueprint",
+      "paragraphs": [
+        "Fork smeltery/set-me-up-blueprint on GitHub and note the owner, repository, and branch of the fork. Choose the branch that contains the files you want on this machine. The stock blueprint includes an rcm profile and a minimal example module.",
+        "Inspect smu.toml, .gitmodules, and dotfiles/modules/install.sh in the fork. Review any module or dotfile changes before you install them. Keep credentials and host secrets outside the repository."
+      ],
+      "links": [
+        {
+          "label": "Blueprint layout",
+          "href": "/docs/guides/blueprints",
+          "icon": "folder"
+        }
+      ]
+    },
+    {
+      "id": "download",
+      "title": "Download and inspect the bootstrap",
+      "paragraphs": [
+        "Replace the example owner, repository, and branch with your actual fork. Use the branch name as shown on GitHub. If curl returns 404, verify the branch, path, and repository access before proceeding.",
+        "Read the downloaded bootstrap and check the installer source referenced by SMU_INSTALLER_URL or SMU_INSTALLER_REF. Review the code it delegates to as well. Downloading from a branch follows the version currently at that branch, so check again if the source changes."
+      ],
+      "language": "Terminal",
+      "code": "export SMU_BLUEPRINT=\"your-account/your-blueprint\"\nexport SMU_BLUEPRINT_BRANCH=\"main\"\nBOOTSTRAP_URL=\"https://raw.githubusercontent.com/${SMU_BLUEPRINT}/${SMU_BLUEPRINT_BRANCH}/dotfiles/modules/install.sh\"\ncurl -fL \"$BOOTSTRAP_URL\" -o smu-bootstrap.sh\nless smu-bootstrap.sh"
+    },
+    {
+      "id": "preview",
+      "title": "Preview the installation",
+      "paragraphs": [
+        "The plan reports the target repository, branch, destination, installer reference, and submodule scope. The doctor also reports the state and readiness of an existing destination.",
+        "Check blueprint.repo, blueprint.branch, and blueprint.path against your intended checkout. Look at installer.ref and submodule_scope to see which bootstrap source and checkout scope you selected.",
+        "A new destination normally reports missing and ready. If the existing path reports blocked-dirty, preserve your local work before retrying. For blocked-not-git, pick another directory or inspect the existing contents before proceeding."
+      ],
+      "language": "Terminal",
+      "code": "bash smu-bootstrap.sh --no-header --plan --json\nbash smu-bootstrap.sh --no-header --doctor --json",
+      "notice": "The preview reports the target without cloning or updating the blueprint. It still runs the reviewed bootstrap and its prerequisite checks."
+    },
+    {
+      "id": "install",
+      "title": "Install the blueprint",
+      "paragraphs": [
+        "Run the installer once the destination and source match your plan. It prompts before obtaining the blueprint. A new setup clones the requested branch and initializes its selected submodules. An existing clean checkout is updated with a fast-forward.",
+        "The bootstrap writes a local set-me-up profile. Provision the modules you want as a separate step."
+      ],
+      "language": "Terminal",
+      "code": "bash smu-bootstrap.sh --no-header"
+    },
+    {
+      "id": "verify",
+      "title": "Verify the checkout and CLI",
+      "paragraphs": [
+        "Confirm the remote and branch in the checkout. If smu is not on PATH, the function below runs the Python CLI from the bundled installer. It applies only to this Bash session and also works with a custom SMU_HOME_DIR.",
+        "The installer shown in the bootstrap plan is the script that obtains your blueprint. The CLI comes from the set-me-up-installer submodule pinned by that blueprint. Check smu --help to see what the installed version supports."
+      ],
+      "language": "Terminal",
+      "code": "export SMU_HOME_DIR=\"${SMU_HOME_DIR:-$HOME/set-me-up}\"\ngit -C \"$SMU_HOME_DIR\" remote get-url origin\ngit -C \"$SMU_HOME_DIR\" branch --show-current\nsmu() {\n  python3 \"$SMU_HOME_DIR/set-me-up-installer/smu.py\" \"$@\"\n}\nsmu --help"
+    },
+    {
+      "id": "discover",
+      "title": "Find modules for this machine",
+      "paragraphs": [
+        "List the modules in your checkout and check their state. The normal list includes the current operating system bucket and universal modules. Use a name from the list when selecting a platform module.",
+        "For a small first run on the stock blueprint, try the example module in the Modules guide. It is a script skeleton, so you can check the provisioning workflow without selecting a package collection. On a headless Debian or Ubuntu machine, use the VPS guide instead."
+      ],
+      "language": "Terminal",
+      "code": "smu --list-modules\nsmu status --json",
+      "links": [
+        {
+          "label": "Choose and apply modules",
+          "href": "/docs/guides/modules",
+          "icon": "folder"
+        },
+        {
+          "label": "Set up a headless VPS",
+          "href": "/docs/guides/vps",
+          "icon": "server"
+        },
+        {
+          "label": "Troubleshoot an install",
+          "href": "/docs/guides/troubleshooting",
+          "icon": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "acceptance",
+      "title": "Finish with an acceptance check",
+      "paragraphs": [
+        "An installed checkout is not the same as a fully configured workstation. Confirm that smu resolves to the intended bundled installer, that the selected module completed, and that the tool or file it manages behaves as expected. Keep the scope of the first run deliberately small.",
+        "Write down what you verified and what remains manual, such as credentials or an application sign-in. This gives you a concrete next step rather than an ambiguous claim that the machine is done."
+      ],
+      "diagram": {
+        "title": "A successful first setup",
+        "actors": ["Review sources", "Install blueprint", "Verify one module"],
+        "steps": [
+          [0, 1, "Confirm destination and source"],
+          [1, 2, "Use the bundled CLI"],
+          [2, 2, "Inspect the actual result"]
+        ],
+        "caption": "Only expand the setup after the initial checkout and a small module run are understood."
+      },
+      "links": [
+        {
+          "label": "Review plans in detail",
+          "href": "/docs/guides/review-a-plan",
+          "icon": "folder"
+        },
+        {
+          "label": "Keep a repeatable routine",
+          "href": "/docs/guides/setup-routine",
+          "icon": "up"
+        }
+      ]
+    }
+  ]
+}

@@ -102,7 +102,7 @@ shell_checks() {
 
 markdown_checks() {
     npx markdownlint-cli2 "**/*.md" "#blueprint" "#docs" "#home" \
-        "#installer" "#modules" "#shared" "#tests" "#utilities"
+        "#installer" "#modules" "#shared" "#tests" "#utilities" "#website/ascii/node_modules" "#website/node_modules" "#website/.next" "#website/.flox"
 }
 
 manifest_checks() {

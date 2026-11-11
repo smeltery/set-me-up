@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.source/
+*.tsbuildinfo
+.env*
+!.env.example
+dist/
+__pycache__/
+ascii/node_modules/
+.website-studio/
+.DS_Store

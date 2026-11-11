@@ -1,0 +1,154 @@
+@font-face { font-family: "Schibsted Grotesk"; src: url("/fonts/schibsted-grotesk.ttf"); font-weight: 100 900; font-display: swap; }
+.marketing-site .masthead { --ink:#e5ebe1; --muted:#99a894; --paper:#14231b; --surface:#203426; --line:#40563e; --accent-soft:#304632; font-family:"Schibsted Grotesk",sans-serif; height:48px; min-height:48px; top:16px; background:var(--paper); box-shadow:none; backdrop-filter:none; }
+.marketing-site .nav-wordmark { font:500 14px/1 "Schibsted Grotesk",sans-serif; }
+.marketing-site .masthead .site-nav a { min-height:32px; font-size:14px; font-weight:500; }
+.marketing-site .masthead .nav-primary a { padding:6px 12px; }
+.marketing-site .nav-mobile-github { display:none; }
+.marketing-site .masthead .search-toggle { height:32px; min-height:32px; padding:6px 12px; background:var(--surface); }
+@media(max-width:1023px) {
+  .marketing-site .masthead { flex-wrap:nowrap; padding:6px; gap:8px; }
+  .marketing-site .masthead > .home { margin:0 auto 0 8px; }
+  .marketing-site .masthead > .menu-toggle { order:-1; width:32px; height:32px; min-height:32px; padding:0; background:transparent; border:0; }
+  .marketing-site .menu-toggle > span { display:none; }
+  .marketing-site .mobile-search-toggle { margin-left:0; }
+  .marketing-site .nav-mobile-github { display:grid; place-items:center; width:28px; height:32px; }
+  .marketing-site .nav-mobile-github span { display:none; }
+  .marketing-site .nav-mobile-github svg { width:18px; height:18px; }
+}
+@media (max-width: 1023px) {
+  body.marketing-site .masthead {
+    padding: 6px;
+    gap: 8px;
+  }
+  body.marketing-site .masthead > .home {
+    margin: 0 auto 0 8px;
+  }
+  body.marketing-site .masthead[data-menu-open] {
+    inset: 16px 12px auto;
+    width: min(46rem, calc(100% - 24px));
+    height: 48px;
+    min-height: 0;
+    margin-inline: auto;
+    padding: 6px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow: visible;
+  }
+  body.marketing-site .masthead[data-menu-open] > .home {
+    margin: 0 auto 0 8px;
+  }
+  body.marketing-site .masthead[data-menu-open] > .menu-toggle {
+    order: -1;
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    min-height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  body.marketing-site .masthead[data-menu-open] > .mobile-search-toggle,
+  body.marketing-site .masthead[data-menu-open] > .nav-mobile-github,
+  body.marketing-site .masthead[data-menu-open] > .nav-theme-toggle {
+    display: grid;
+  }
+  body.marketing-site .masthead[data-menu-open] .site-nav {
+    transform-origin: 16px 0;
+    position: fixed;
+    inset: 78px 0 auto;
+    height: calc(100dvh - 78px);
+    display: block;
+    overflow-y: auto;
+    padding: 24px;
+    background: var(--paper);
+    backdrop-filter: blur(16px);
+    border: 0;
+    border-radius: 0;
+  }
+  body.marketing-site .masthead[data-menu-open] .nav-scroll {
+    padding: 0;
+    overflow: visible;
+  }
+  body.marketing-site .masthead[data-menu-open] #mobile-menu-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 16px;
+    color: var(--muted);
+  }
+  body.marketing-site .masthead[data-menu-open] .nav-primary {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  body.marketing-site .masthead[data-menu-open] .nav-primary a,
+  body.marketing-site .masthead[data-menu-open] .nav-guides a {
+    display: block;
+    padding: 0;
+    min-height: 0;
+    width: 100%;
+    text-align: left;
+    align-self: stretch;
+    border: 0;
+    background: transparent;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+  }
+  body.marketing-site .masthead[data-menu-open] .nav-primary small,
+  body.marketing-site .masthead[data-menu-open] .nav-symbol,
+  body.marketing-site .masthead[data-menu-open] .nav-resources,
+  body.marketing-site .masthead[data-menu-open] .nav-art,
+  body.marketing-site .masthead[data-menu-open] .nav-utility {
+    display: none;
+  }
+  body.marketing-site .masthead[data-menu-open] .nav-guides {
+    display: grid;
+    gap: 48px;
+    margin-top: 48px;
+  }
+  body.marketing-site .masthead[data-menu-open] .nav-guides section {
+    display: grid;
+    gap: 12px;
+  }
+  body.marketing-site .masthead[data-menu-open] .nav-guides h3 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  body.marketing-site .masthead .menu-open-icon,
+  body.marketing-site .masthead .menu-close-icon {
+    display: block;
+    transform-origin: center;
+    transition:
+      opacity 100ms,
+      transform 100ms;
+  }
+  body.marketing-site .masthead:not([data-menu-open]) .menu-close-icon {
+    opacity: 0;
+    transform: rotate(-45deg);
+  }
+  body.marketing-site .masthead[data-menu-open] .menu-open-icon {
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.marketing-site .masthead .menu-open-icon,
+  body.marketing-site .masthead .menu-close-icon {
+    transition: none;
+  }
+}
+body.marketing-site .masthead[data-menu-open] { background:var(--paper); color:var(--ink); }
+body.marketing-site .masthead[data-menu-open] .nav-mobile-github span { display:none; }
+body.marketing-site .masthead .nav-mobile-github { flex:none; }
+body.marketing-site .masthead .nav-mobile-github svg { width:18px; height:18px; }
+body.marketing-site:not(.error-page) .masthead { top:16px; }

@@ -1,0 +1,21 @@
+/* Landscapes keep native hues with a forest tint; logos retain their own palettes. */
+.platform-logos { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:24px; padding-top:16px; border-top:1px solid var(--line); }
+.platform-logos a { display:flex; align-items:center; justify-content:center; gap:12px; min-height:88px; padding:12px 8px; border-radius:8px; color:var(--slate); text-decoration:none; font:500 13px/1.5 var(--sans); transition:background 150ms,color 150ms; }
+.platform-logos a:hover { background:var(--highlight-wash); color:var(--ink); }
+.platform-logos canvas { display:block; flex:none; width:64px!important; height:auto; max-height:64px; object-fit:contain; }
+.rest-file-tree { display:block; margin:auto; font:clamp(8px,.9vw,12px)/1.2 var(--mono); letter-spacing:0; color:var(--cobalt); white-space:pre; }
+.plate-illustration:has(.rest-file-tree) { display:grid; place-items:center; overflow:hidden; }
+.forest-scenes { grid-column:1/-1; display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-top:20px; font:12px/1.5 var(--mono); }
+.forest-scenes > span { color:#dbe2c5; margin-right:8px; }
+.forest-scenes button { padding:8px 12px; min-height:36px; border:1px solid #77945c; color:#e4e9d7; background:#14231be6; cursor:pointer; }
+.forest-scenes button:hover,.forest-scenes button[aria-pressed=true] { background:#d7dfb2; color:#14231b; }
+.launch-art:has([data-forest-gallery]) { mask-image:linear-gradient(90deg,#0008,#000); }
+.launch-art canvas[data-forest-gallery] { width:100%!important; height:100%; object-fit:cover; }
+@media(max-width:640px) {
+ .platform-logos { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .platform-logos a { flex-direction:column; gap:8px; padding:12px 8px; min-height:96px; font-size:12px; }
+ .platform-logos canvas { width:48px!important; max-height:48px; }
+ .rest-file-tree { font-size:11px; }
+ .forest-scenes > span { width:100%; }
+}
+.launch-art:has([data-forest-gallery])::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,#14231bc7,#14231b59 55%,#14231b00); pointer-events:none; }

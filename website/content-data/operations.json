@@ -1,0 +1,52 @@
+{
+  "path": "/docs/operations",
+  "title": "Operations",
+  "group": "Operations",
+  "order": 0,
+  "description": "Keep an installed setup healthy: update it, verify changes, diagnose failures, and plan for additional hosts.",
+  "sections": [
+    {
+      "id": "maintain",
+      "title": "Maintain a working setup",
+      "paragraphs": [
+        "Use a short review, apply, and verify cycle. Understand the update boundary and rollback coverage before changing a machine that already works."
+      ],
+      "links": [
+        {
+          "label": "Build a repeatable setup routine",
+          "href": "/docs/guides/setup-routine",
+          "icon": "up"
+        },
+        {
+          "label": "Updates and rollback",
+          "href": "/docs/guides/updates",
+          "icon": "up"
+        },
+        {
+          "label": "Troubleshoot an installed setup",
+          "href": "/docs/guides/troubleshooting",
+          "icon": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "hosts",
+      "title": "Operate servers and multiple hosts",
+      "paragraphs": [
+        "Use the headless path for Debian or Ubuntu servers and validate each host rather than assuming that a shared blueprint makes every environment identical."
+      ],
+      "links": [
+        {
+          "label": "Headless VPS",
+          "href": "/docs/guides/vps",
+          "icon": "server"
+        },
+        {
+          "label": "Plan a fleet of hosts",
+          "href": "/docs/guides/fleet",
+          "icon": "server"
+        }
+      ]
+    }
+  ]
+}

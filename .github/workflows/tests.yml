@@ -48,4 +48,4 @@ jobs:
           echo "- **Shell**: $(bash --version | head -n 1)" >> $GITHUB_STEP_SUMMARY
           echo "- **Git**: $(git --version)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✓ All tests passed successfully" >> $GITHUB_STEP_SUMMARY
+          echo "- **Result**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY

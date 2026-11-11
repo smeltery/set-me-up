@@ -24,17 +24,30 @@ wordmark is drawn as vectors, so it renders without a font install.
   measured from the visible artwork.
 - Keep the lockup at least 180 px wide on screen. Use the square mark for
   smaller placements down to 16 px.
-- Use the light-background lockup on Frost and the dark-background lockup on
-  Ink or Cobalt.
+- Use the light-background lockup on Cream and the dark-background lockup on
+  Forest Ink or Moss.
 
 ## README header and social preview
 
-The root README uses the same PNG as the GitHub social preview. Edit the
-ASCII landscape or text in `social-card.svg`, then export the PNG from the
-repository root with librsvg installed.
+The root README and marketing link previews use the same 1280 × 640 PNG.
+The backdrop is the hero’s actual asciicn Redwood Light still, with blocks,
+truecolor, mist, motes, and 7 px square cells. Its pinned source and capture
+settings live in [the ASCII recipes](../website/ascii/README.md).
+
+Edit the copy and overlays in `social-card-template.svg`, then regenerate
+from the repository root with Python and librsvg installed:
 
 ```bash
-rsvg-convert --output brand/social-card.png brand/social-card.svg
+python3 brand/render.py
+python3 website/build.py
+```
+
+`render.py` embeds `website/site/hero-glyphs.svg` in the editable social SVG
+and exports the PNG. After updating the shared preview, synchronize the
+separate docs checkout when it is present:
+
+```bash
+cp brand/social-card.png docs/site/public/og.png
 ```
 
 Upload the new PNG under **Settings → Social preview** when the card changes.
@@ -47,13 +60,18 @@ GitHub stores this image separately from the README.
 
 | Color | Hex | Role |
 | --- | --- | --- |
-| Ink | `#111A3A` | Dark surfaces and primary text on Frost |
-| Frost | `#F7F9FF` | Light surfaces and primary text on Ink or Cobalt |
-| Cobalt | `#3046B4` | Brand surface and links on Frost |
-| Ice | `#CCD7FF` | Highlights and secondary text on Ink or Cobalt |
-| Slate | `#4C5C84` | Secondary text on Frost |
+| Forest Ink | `#14231B` | Primary text and dark brand surfaces |
+| Cream | `#F7F6EF` | Reading surfaces and text on dark backgrounds |
+| Moss | `#456449` | Primary actions and links |
+| Canopy | `#D7DFB2` | Pale highlights and primary actions on dark backgrounds |
+| Mist | `#DBE2C5` | Secondary text and subtle highlights |
+| Slate | `#586750` | Secondary text on Cream |
+| Forest Night | `#0A1510` | Artwork backdrops |
 
-Use Ink on Frost for long-form reading. Underline Cobalt links in running copy.
+Use Forest Ink on Cream for long-form reading. Use Moss for links and
+Canopy for highlights on dark surfaces. The website, documentation, logos,
+and social previews share this Redwood Light palette; avoid orange UI accents.
+Keep the forest artwork’s native lighting and bark colors.
 
 ## Typography and ASCII
 

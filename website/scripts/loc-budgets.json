@@ -1,0 +1,8 @@
+{
+  "default": 300,
+  "files": {
+    "components/marketing-content.tsx": 900,
+    "styles/marketing.css": 1200,
+    "styles/marketing-theme.css": 400
+  }
+}
