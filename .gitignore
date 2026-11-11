@@ -12,3 +12,7 @@ utilities/
 
 # Optional personal manifest for extra local checkouts (see scripts/docs/MACHINE-LOCAL.md)
 scripts/local-repos.txt
+
+# The marketing application's own guides are first-party source.
+!website/docs/
+!website/docs/**
