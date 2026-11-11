@@ -21,8 +21,35 @@ export const SmoothScroll = () => {
       anchors: true,
       autoRaf: true,
       lerp: 0.1,
+      prevent: (node) => node.closest('[role="dialog"]') !== null,
     });
-    return () => lenis.destroy();
+    // Radix locks native scrolling; stop Lenis too so wheel inertia cannot move the page.
+    let readingPosition: number | null = null;
+    let restoreFrame = 0;
+    const syncLock = () => {
+      if (document.body.hasAttribute("data-scroll-locked")) {
+        readingPosition ??= window.scrollY;
+        cancelAnimationFrame(restoreFrame);
+        lenis.stop();
+      } else {
+        lenis.start();
+        if (readingPosition !== null) {
+          const position = readingPosition;
+          readingPosition = null;
+          restoreFrame = requestAnimationFrame(() => {
+            lenis.scrollTo(position, { immediate: true, force: true });
+          });
+        }
+      }
+    };
+    const observer = new MutationObserver(syncLock);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["data-scroll-locked"] });
+    syncLock();
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(restoreFrame);
+      lenis.destroy();
+    };
   }, []);
 
   return null;

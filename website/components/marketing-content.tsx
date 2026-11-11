@@ -49,20 +49,9 @@ export function MarketingContent() {
           <div className="plates">
             <article className="plate">
               <figure>
-                <p className="plate-label">{"blueprint · source repo"}</p>
+                <p className="plate-label">{"blueprint · define your setup"}</p>
                 <div className="plate-illustration" aria-hidden="true">
-                  <div className="blueprint-browser">
-                    <div className="blueprint-browser-bar">
-                      <span>{"[~/] blueprint"}</span>
-                      <span>{"⑂ main"}</span>
-                    </div>
-                    <RestArt
-                      piece="file-tree"
-                      logo={false}
-                      className="rest-file-tree"
-                      aria-label=""
-                    />
-                  </div>
+                  <FeatureTile feature="blueprint" />
                 </div>
                 <PlateCommand command="smu blueprint doctor" />
               </figure>
@@ -75,11 +64,9 @@ export function MarketingContent() {
             </article>
             <article className="plate">
               <figure>
-                <p className="plate-label">{"modules · your platform"}</p>
+                <p className="plate-label">{"modules · compose your profile"}</p>
                 <div className="plate-illustration" aria-hidden="true">
-                  <div className="feature-tile" data-feature-tile="modules">
-                    <FeatureTile feature="modules" />
-                  </div>
+                  <FeatureTile feature="modules" />
                 </div>
                 <PlateCommand command="smu --list-modules" />
               </figure>
@@ -92,11 +79,9 @@ export function MarketingContent() {
             </article>
             <article className="plate">
               <figure>
-                <p className="plate-label">{"plan · local machine"}</p>
+                <p className="plate-label">{"plan · review before applying"}</p>
                 <div className="plate-illustration" aria-hidden="true">
-                  <div className="feature-tile" data-feature-tile="plan">
-                    <FeatureTile feature="plan" />
-                  </div>
+                  <FeatureTile feature="plan" />
                 </div>
                 <PlateCommand command="smu plan" />
               </figure>

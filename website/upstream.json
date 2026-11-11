@@ -14,7 +14,8 @@
     },
     "components/smooth-scroll.tsx": {
       "sha256": "6890a1c881e7a0f2e99da49ce9144ef7677cd9243a3b197679760c358f75a133",
-      "adapted": false
+      "adapted": true,
+      "reason": "Suspend Lenis when Radix locks page scrolling and allow native dialog scrolling."
     },
     "components/site-header.tsx": {
       "sha256": "f9ad267cf82b5f87053b07945a892dd2714b882b5a7d2c1262e9d5f90a88f88e",
